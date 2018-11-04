@@ -1,0 +1,26 @@
+./upload
+cd welcome
+./upload
+cd ../callandresponse1
+./upload
+cd ../curry1
+./upload
+cd ../pump1
+./upload
+cd ../ruby1
+./upload
+cd ../haas2
+./upload
+cd ../mkia1
+./upload
+cd ../morris1
+./upload
+cd ../pivi1
+./upload
+cd ../time1
+./upload
+cd ../wall1
+./upload
+cd ../rifas1
+./upload
+cd ..

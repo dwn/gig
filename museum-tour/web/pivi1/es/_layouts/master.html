@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+
+  {% include head.html %}
+
+  <body>
+    {% include tagmanager.html %}
+    {% include header.html %}
+
+    <div class="page-content main-page">
+      <div class="wrapper">
+        <h2>{{ site.exhibit }}</h2>
+        <!-- <a href='/index-es.html' style='float:left;border:.1em solid lightgray;color:#555555;border-radius:.2em;padding:.2em'>Otra exhibición</a><br><br> -->
+        {{ content }}
+      </div>
+    </div>
+
+    {% include footer.html %}
+
+  </body>
+
+</html>

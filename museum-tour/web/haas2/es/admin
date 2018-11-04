@@ -1,0 +1,4 @@
+JEKYLL_ENV=development bundle exec jekyll build
+echo ADMINISTRATOR PAGE IS AT ---------------------------------
+echo http://localhost:4001/admin ------------------------------
+jekyll serve --port 4001

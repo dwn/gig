@@ -1,0 +1,10 @@
+{% extends "account/account.html" %}
+{% block body %}
+  {% if not session.logged_in %}
+    <a class=abtn href={{google_auth_url}}>Log in with Google</a>
+  {% endif %}
+{% endblock %}
+{% block button %}
+  {% if not session.logged_in %}
+  {% endif %}
+{% endblock %}

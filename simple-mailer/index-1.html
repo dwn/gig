@@ -1,0 +1,91 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Unknown </title></head><body>
+<h1 id="readme">README</h1>
+<h1 id="simple-mailer">Simple mailer</h1>
+<ul>
+<li>FOR RUNNING IN FRESH ENVIRONMENT ON LINUX</li>
+</ul>
+<p>. source-me-first</p>
+<ul>
+<li>TO SERVE CONTENT TO WEB BROWSER</li>
+</ul>
+<p>./serve</p>
+<ul>
+<li>TO ADD TO GIT REPOSITORY</li>
+</ul>
+<p>./deploy</p>
+<ul>
+<li>TO VIEW SENDGRID INFO OF HEROKU ADDON</li>
+</ul>
+<p>./show-sendgrid</p>
+<ul>
+<li>TO CHANGE PROJECT SETTINGS, OPEN</li>
+</ul>
+<p>config.py</p>
+<ul>
+<li>FOR LOG FILE CREATED DURING RUN, OPEN</li>
+</ul>
+<p>log.txt</p>
+<h1 id="instructions">INSTRUCTIONS</h1>
+<ol>
+<li>
+<p>User will log into the web server mailer page ( htaccess or similar security)</p>
+</li>
+<li>
+<p>This page will have fields as listed below:</p>
+</li>
+</ol>
+<p>•   MAILING NAME</p>
+<p>o   This will be the unique name of the mailing that is to be sent</p>
+<p>•   UPLOAD file (text or csv) see attached sample file.</p>
+<p>o   As soon as file is uploaded show how many contacts were imported</p>
+<p>o   The format of file will be First name, last name, email address, school  </p>
+<p>o   All these fields in the database will be wildcards meaning mentioning them in SUBJECT or BODY of email will use the entry fields</p>
+<p>   Example: NAME, how are you? Will make each email personalized with users NAME. Maxim, how are you?</p>
+<p>•   FROM email:</p>
+<p>•   SUBJECT: </p>
+<p>•   BODY of email (text only)</p>
+<p>•   Sendgrid API to use:
+3.  User clicks SEND button</p>
+<ol>
+<li>First thing is to check score using MAIL TESTER API https://www.mail-tester.com/manager/api-documentation.html if email score is:</li>
+</ol>
+<p>a.  higher than 7</p>
+<p>i.  start sending messages to all emails in the imported emails</p>
+<p>b.  lower than 6.9</p>
+<p>i.  stop sending and show message: Score too low: XX     </p>
+<p>ii. Reasons for Low score</p>
+<ol>
+<li>Once all messages are sent in the batch send report to namecaller@yandex.com</li>
+</ol>
+<p>a.  Subject: Simple Mailer</p>
+<p>b.  Total emails sent: XX</p>
+<ol>
+<li>Do not store any email or data on the server. Keep only the message history (DATE, MALING NAME, NUMBER OF EMAILS SENT, SUCCESS/FAIL)</li>
+</ol>
+<h3 id="what-is-this-repository-for">What is this repository for?</h3>
+<ul>
+<li>Quick summary</li>
+<li>Version</li>
+<li><a href="https://bitbucket.org/tutorials/markdowndemo">Learn Markdown</a></li>
+</ul>
+<h3 id="how-do-i-get-set-up">How do I get set up?</h3>
+<ul>
+<li>Summary of set up</li>
+<li>Configuration</li>
+<li>Dependencies</li>
+<li>Database configuration</li>
+<li>How to run tests</li>
+<li>Deployment instructions</li>
+</ul>
+<h3 id="contribution-guidelines">Contribution guidelines</h3>
+<ul>
+<li>Writing tests</li>
+<li>Code review</li>
+<li>Other guidelines</li>
+</ul>
+<h3 id="who-do-i-talk-to">Who do I talk to?</h3>
+<ul>
+<li>Repo owner or admin</li>
+<li>Other community or team contact</li>
+</ul>
+</body></html>

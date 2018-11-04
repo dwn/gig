@@ -1,0 +1,24 @@
+version="$(date)"
+printf ' * Version %s\n' "${version}"
+
+if [[ "$@" == "local" ]]
+then
+  #SERVE LOCALHOST
+  python app.py
+else
+  #SERVE DOMAIN
+  #First try to exit tmux session politely
+  tmux send-keys -t serve-ses.0 C-c 'exit' ENTER
+  #Then destroy if zombie
+  kill -9 $(ps -e | pgrep '[Tt]mux|[Gg]unicorn') 2>/dev/null
+  service nginx restart
+  tmux new -d -s serve-ses
+  tmux send-keys -t serve-ses.0 '. source-me-first ; gunicorn --bind 45.55.147.160:8000 app:app' ENTER
+fi
+
+printf ' Deleting .pyc files\n'
+find . -name '*.pyc' -type f -delete
+printf ' * Deleting .csv files\n'
+rm -f static/*.csv
+printf '\e[1;31m%-6s\e[m\n' 'CHECK BEFORE DEPLOY:'
+grep -Ir DISABLE_CACHE ../config_simple-mailer.py

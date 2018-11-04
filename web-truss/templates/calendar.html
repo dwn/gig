@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head lang="ko">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>Flask Web Scheduler</title>
+  <link rel="stylesheet" href="{{ url_for('static',filename='jquery-ui/jquery-ui.min.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static',filename='jquery-ui/jquery-ui.structure.min.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static',filename='jquery-ui/jquery-ui.theme.min.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static',filename='fullcalendar/fullcalendar.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static',filename='calendar.css') }}" />
+  <style>
+  .event_selected {
+    background-color: red;
+  }
+  </style>
+
+  <script src="{{ url_for('static',filename='jquery/jquery.min.js') }}"></script>
+  <script src="{{ url_for('static',filename='moment/moment.min.js') }}"></script>
+  <script src="{{ url_for('static',filename='jquery-ui/jquery-ui.min.js') }}"></script>
+  <script src="{{ url_for('static',filename='moment/moment.min.js') }}"></script>
+  <script src="{{url_for('static',filename='fullcalendar/fullcalendar.js')}}"></script>
+  <script>
+  $(document).ready(function() {
+    $("#calendar").fullCalendar({
+      events : '{{url_for('scheduler')}}',
+      dayClick : function(date){
+          $('#start, #end').datepicker('setDate',date._d);
+          $('.event_selected').removeClass('event_selected');
+          $(this).addClass('event_selected');
+      },
+      eventClick : function(event){
+        $('#id').val(event.id);
+        $('#title').val(event.title);
+        $('#arr_usr_id').val(event.arr_usr_id);
+        $('#start').val(event.start.toISOString());
+        $('#end').val(event.end == null ? event.start.toISOString() : event.end.toISOString() );
+        $('.event_selected').removeClass('event_selected');
+        $(this).addClass('event_selected');
+     }
+   });
+
+    $('#start, #end').datepicker({
+      dateFormat: "yy-mm-dd",
+      onSelect : function(dateText, inst){
+        if(this.id == 'start'){
+          $('#start').datepicker("getDate").getTime() > $('#end').datepicker("getDate").getTime();
+          $('#end').datepicker("setDate", dateText);
+        }
+      }
+    });
+
+    $('#start, #end').datepicker('setDate',new Date());
+
+    $('#insertBtn').click(function(){
+      $.ajax({
+        url : '{{url_for('scheduler')}}',
+        type : 'post',
+        data :$('#schedulerForm').serialize(),
+        success : function(res){
+          let data = JSON.parse(res);
+          if(data.rows > 0){
+            $("#calendar").fullCalendar( 'refetchEvents' )
+          }
+          else{
+            alert('failed');
+          }
+        }
+      });
+    });
+
+    $('#updateBtn').click(function(){
+      $.ajax({
+        url : '{{url_for('scheduler')}}',
+        type : 'put',
+        data :$('#schedulerForm').serialize(),
+        success : function(res){
+          let data = JSON.parse(res);
+          if(data.rows > 0){
+            $("#calendar").fullCalendar( 'refetchEvents' )
+          }
+          else{
+            alert('failed');
+          }
+        }
+      });
+    });
+
+    $('#deleteBtn').click(function(){
+      if(confirm($('#title').val() + " - are you sure you want to delete this event?")){
+        $.ajax({
+          url : '{{url_for('scheduler')}}',
+          type : 'delete',
+          data :{id:$('#id').val()},
+          success : function(res){
+            let data = JSON.parse(res);
+            if(data.rows > 0){
+              $("#calendar").fullCalendar( 'refetchEvents' )
+            }
+            else{
+              alert('failed');
+            }
+          }
+        });
+      }
+    });
+  });
+  </script>
+</head>
+<body>
+  <!-- <div class=calendar-container> -->
+    <form name="schedulerForm" id="schedulerForm">
+      start : <input type="text" name="start" id="start" readonly="readonly">
+      end : <input type="text" name="end" id="end" readonly="readonly">
+      title : <input type="text" name="title" id="title">
+      arr_usr_id : <input type="text" name="arr_usr_id" id="arr_usr_id">
+      <input type="hidden" name="id" id="id">
+      <label for="allDay">all day</label>
+      <input type="checkbox" name="allDay" id="allDay" checked="checked" value="Y">
+      <button type="button" id="insertBtn">insert</button>
+      <button type="button" id="updateBtn">update</button>
+      <button type="button" id="deleteBtn">delete</button>
+    </form>
+    <div id="calendar"></div>
+  <!-- </div> -->
+</body>
+</html>

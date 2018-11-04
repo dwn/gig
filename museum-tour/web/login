@@ -1,0 +1,1 @@
+ssh -i "~/.ssh/basskey.pem" ec2-user@18.207.177.89

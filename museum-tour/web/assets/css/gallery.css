@@ -1,0 +1,88 @@
+@font-face { font-family:"Maison Neue Demi"; src:url("assets/fnt/maison/MaisonNeueTRIAL-Demi.otf"); }
+
+.text {
+  font-family: 'Maison Neue Demi', 'Arial', 'Helvetica', sans-serif;
+  text-align: center;
+  margin:.525em 0 .75em 0;
+  padding:0;
+  /*line-height:24em;*/
+  white-space: nowrap
+}
+
+.pho {
+  /* Just in case there are inline attributes */
+  width: 50% !important;
+  height: auto !important;
+  float: left;
+}
+
+img {
+  width: 45vw;
+}
+
+@media only screen and (min-width:1000px) {
+.pho {
+  /* Just in case there are inline attributes */
+  width: 33% !important;
+  height: auto !important;
+  float: left;
+}
+
+img {
+  width: 27vw;
+}
+}
+
+@media only screen and (min-width:1200px) {
+.pho {
+  /* Just in case there are inline attributes */
+  width: 25% !important;
+  height: auto !important;
+  float: left;
+}
+
+img {
+  width: 20vw;
+}
+}
+
+#photos {
+  float:left;
+}
+
+/*bouncy image*/
+@keyframes bounce {
+  0% {
+    -webkit-transform: scale(1);
+    -ms-transform:     scale(1);
+    transform:         scale(1)
+  }
+  50% {
+    -webkit-transform: scale(.95);
+    -ms-transform:     scale(.95);
+    transform:         scale(.95)
+  }
+  100% {
+    -webkit-transform: scale(1);
+    -ms-transform:     scale(1);
+    transform:         scale(1)
+  }
+}
+.bouncy {  
+  -webkit-animation-duration: .5s;
+  animation-duration: .5s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-animation-timing-function: ease-in-out;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: 1;
+  -webkit-animation-iteration-count: 1;
+  color: black;
+  white-space: nowrap
+}
+.bouncy:hover {
+  cursor: pointer;
+  animation-name: bounce;
+  -moz-animation-name: bounce;
+  white-space: nowrap
+}

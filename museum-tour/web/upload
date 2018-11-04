@@ -1,0 +1,7 @@
+rsync -uv -e "ssh -i \"$HOME/.ssh/basskey.pem\"" index-en.html ec2-user@18.207.177.89:/var/www/html/favicon.ico
+rsync -uv -e "ssh -i \"$HOME/.ssh/basskey.pem\"" index-en.html ec2-user@18.207.177.89:/var/www/html/index-en.html
+rsync -uv -e "ssh -i \"$HOME/.ssh/basskey.pem\"" index-es.html ec2-user@18.207.177.89:/var/www/html/index-es.html
+rsync -uv -e "ssh -i \"$HOME/.ssh/basskey.pem\"" about-en.html ec2-user@18.207.177.89:/var/www/html/about-en.html
+rsync -uv -e "ssh -i \"$HOME/.ssh/basskey.pem\"" about-es.html ec2-user@18.207.177.89:/var/www/html/about-es.html
+rsync -ruv -e "ssh -i \"$HOME/.ssh/basskey.pem\"" assets/* ec2-user@18.207.177.89:/var/www/html/assets
+rsync -ruv -e "ssh -i \"$HOME/.ssh/basskey.pem\"" welcome/* ec2-user@18.207.177.89:/var/www/html/welcome

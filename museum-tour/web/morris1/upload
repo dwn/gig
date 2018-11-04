@@ -1,0 +1,6 @@
+cp -rf ../common/* .
+cd en
+./upload
+cd ../es
+./upload
+cd ..
