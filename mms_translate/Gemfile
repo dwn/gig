@@ -1,0 +1,8 @@
+source "https://rubygems.org"
+
+ruby "2.3.4"
+gem "sinatra"
+gem "twilio-ruby"
+gem "unirest"
+gem "sinatra-run-later"
+gem "bing_translator"
