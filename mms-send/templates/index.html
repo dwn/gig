@@ -1,0 +1,92 @@
+<head>
+  <meta name=viewport content='user-scalable=no'>
+  <link rel='shortcut icon' type=image/x-icon href=static/favicon.ico>
+  <link rel=stylesheet type=text/css href=static/common.css>
+  <script type=text/javascript src=static/jquery-3.3.1.min.js></script>
+</head>
+<body>
+  <a href=show_log style='float:right;font-size:60px;margin:10' target=_blank>&#128240;</a>
+  <div class=page>
+    <form class=blue-box form enctype=multipart/form-data  action=/ method=post>
+      <div>
+        <label for=mailing_name>MAILING NAME<br></label>
+        <input type=text name=mailing_name value='{{ session["mailing_name"] }}'>
+      </div>
+      <br>
+      <br>
+      <div>
+        <label class=btn-lbl for=files>UPLOAD CSV LIST</label>
+        <input class=file-click id=files type=file name=file value='upload csv list' onchange='showFileInfo();'>
+      </div>
+      <br>
+      <div id=info>
+        UPLOAD A FILE
+      </div>
+      <div>
+        SURNAME, NAME, EMAIL, SCHOOL
+      </div>
+      <br>
+      {% for category, message in get_flashed_messages(with_categories=true) %}
+        <div class="{{ category }}">{{ message }}</div>
+      {% endfor %}
+      <div>
+        <label for=mail_tester_username>Mail-Tester USERNAME<br></label>
+        <input type=text name=mail_tester_username value='{{ session["mail_tester_username"] }}'>
+      </div>
+      <br>
+      <div>
+        <label for=from_email>FROM email<br></label>
+        <input type=email name=from_email value='{{ session["from_email"] }}'>
+      </div>
+      <br>
+      <div>
+        <label for=subject>SUBJECT<br></label>
+        <input type=text name=subject value='{{ session["subject"] }}'>
+      </div>
+      <br>
+      <div>
+        <label for=sendgrid_api>Sendgrid API key to use<br></label>
+        <input type=password name=sendgrid_api_key value='{{ session["sendgrid_api_key"] }}'>
+      </div>
+      <br>
+      <div>
+        <label for=email_body>BODY of email (text only)<br></label>
+        <textarea rows=20 cols=80 type=text name=email_body autofocus=autofocus>{{ session["email_body"] }}</textarea>
+      </div>
+      <br>
+      <div>
+        <input class=btn type=submit name=send value=SEND>
+      </div>
+    </form>
+  </div>
+<script>
+function showFileInfo(){
+  var x = document.getElementById("files");
+  var txt = "";
+  if ('files' in x) {
+    if (x.files.length == 0) {
+      txt = "select a file";
+    } else {
+      for (var i = 0; i < x.files.length; i++) {
+        // txt += "<br><strong>" + (i+1) + " file</strong><br>";
+        var file = x.files[i];
+        if ('name' in file) {
+          txt += "name: " + file.name + "<br>";
+        }
+        if ('size' in file) {
+          txt += "size: " + file.size + " bytes <br>";
+        }
+      }
+    }
+  } else {
+    if (x.value == "") {
+      txt += "select a file";
+    } else {
+      txt += "The files property is not supported by your browser!";
+      txt += "<br>The path of the selected file: " + x.value; // If the browser does not support the files property, it will return the path of the selected file instead 
+    }
+  }
+  document.getElementById("info").innerHTML = txt;
+}
+</script>
+</body>

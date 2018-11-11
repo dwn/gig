@@ -1,0 +1,1 @@
+ssh-keygen ; ssh-copy-id root@45.55.147.160 ; ssh-add

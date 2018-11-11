@@ -1,0 +1,16 @@
+read -p "Redeploying may erase the remote log file! Are you sure? " -n 1 -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+  printf 'web: gunicorn app:app' > Procfile
+  python --version > runtime.txt 2>&1
+  str=$(cat runtime.txt | tr '[:upper:]' '[:lower:]')
+  str=${str// /-}
+  echo $str > runtime.txt 2>&1
+  cat runtime.txt Procfile
+  echo
+  git add .
+  git commit -m 'deploy'
+  git push ${1} --force
+  rm -f runtime.txt Procfile
+fi

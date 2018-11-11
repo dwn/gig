@@ -1,0 +1,1 @@
+curl -X POST -d "Body=French&From=%2b12564686276&MediaUrl0=http://www.cowparade.com/cpwp/wp-content/uploads/8176-A-300x220.jpg" http://mms-translate.herokuapp.com/translate
