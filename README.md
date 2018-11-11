@@ -1,5 +1,5 @@
 # junk
-|Scrapheap of junky little projects|
+|Scrapheap of old junk|
 |:---:|
 |[dwn.herokuapp.com](dwn.herokuapp.com)|
 |![](logo.gif)|
