@@ -1,0 +1,6 @@
+curl -XPOST https://api.twilio.com/2010-04-01/Accounts/AC0b25ffd1e12f6c88bc56f2ad2ef00b1d/Messages.json \
+--data-urlencode "To=+12564686276" \
+--data-urlencode "From=+18305055048" \
+--data-urlencode "MediaUrl=https://demo.twilio.com/owl.png" \
+--data-urlencode "Body=Hello from my Twilio line!" \
+-u 'AC0b25ffd1e12f6c88bc56f2ad2ef00b1d:85f2dd72bd10783fbd96d05c0c9486ee'

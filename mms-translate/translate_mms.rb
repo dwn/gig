@@ -75,7 +75,7 @@ puts "body: Got it, I think your picture contains: #{description}. In #{@request
 
 puts "TWILIO..."
     @client = Twilio::REST::Client.new(twilio_accountsid, twilio_authtoken)
-puts "NOW SENDING SMS TO " + @incoming_number + " FROM " + twilio_fromnumber + "..."
+puts "SENDING SMS TO " + @incoming_number + " FROM " + twilio_fromnumber + "..."
     @client.messages.create(
       from: twilio_fromnumber,
       body: "Got it, I think your picture contains: #{description}. In #{@requested_language} that would be: #{translated}",
