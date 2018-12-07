@@ -1,2 +1,0 @@
-JEKYLL_ENV=production bundle exec jekyll build
-rsync -ruv _site/* miamini2@50.116.101.248:/home/miamini2/public_html/museumcloud/en

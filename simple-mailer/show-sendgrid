@@ -1,3 +1,0 @@
-heroku config:get SENDGRID_USERNAME -a socrates-mailer
-heroku config:get SENDGRID_PASSWORD
-heroku config:get SENDGRID_API_KEY

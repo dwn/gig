@@ -1,2 +1,0 @@
-JEKYLL_ENV=production bundle exec jekyll build
-rsync -ruv -e "ssh -i \"$HOME/.ssh/basskey.pem\"" _site/* ec2-user@18.207.177.89:/var/www/html/time1/en

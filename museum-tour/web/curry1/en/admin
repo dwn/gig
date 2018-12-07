@@ -1,4 +1,0 @@
-JEKYLL_ENV=development bundle exec jekyll build
-echo ADMINISTRATOR PAGE IS AT ---------------------------------
-echo http://localhost:4000/admin ------------------------------
-jekyll serve

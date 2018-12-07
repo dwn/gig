@@ -1,2 +1,0 @@
-heroku repo:purge_cache -a app-museum
-heroku config:set HEROKU=True
