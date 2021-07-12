@@ -1,5 +1,0 @@
-if [ -z ${VIRTUAL_ENV} ]; then
-  printf 'Do first:\n. source-me-first\n'
-else
-  make clean -C app; make -C app
-fi
