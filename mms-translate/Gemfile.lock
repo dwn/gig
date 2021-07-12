@@ -27,7 +27,7 @@ GEM
     nokogiri (1.8.5)
       mini_portile2 (~> 2.3.0)
     nori (2.6.0)
-    rack (1.6.11)
+    rack (1.6.13)
     rack-protection (1.5.5)
       rack
     rest-client (1.6.9)
